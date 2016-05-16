@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redbear128" translatesAutoresizingMaskIntoConstraints="NO" id="Hho-rA-rjR">
+                                <rect key="frame" x="229" y="63" width="141" height="173"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="173" id="IHx-uX-Fo7"/>
+                                    <constraint firstAttribute="width" constant="217" id="reW-Qf-kmx"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="reW-Qf-kmx"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C9a-8S-mfw">
+                                <rect key="frame" x="270" y="285" width="59" height="30"/>
+                                <state key="normal" title="Connect"/>
+                                <connections>
+                                    <action selector="connect:" destination="BYZ-38-t0r" eventType="touchDown" id="bbv-q0-sG7"/>
+                                    <segue destination="b2J-ON-dGn" kind="show" id="EmD-SP-GJe"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IoT-HAT + 8 Nanos Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9h1-8n-cOn">
+                                <rect key="frame" x="149" y="253" width="302" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="302" id="En6-m9-PSf"/>
+                                    <constraint firstAttribute="width" constant="228" id="R1L-KP-63c"/>
+                                    <constraint firstAttribute="width" constant="302" id="YT2-vn-Aa3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="En6-m9-PSf"/>
+                                        <exclude reference="R1L-KP-63c"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="C9a-8S-mfw" firstAttribute="top" secondItem="9h1-8n-cOn" secondAttribute="bottom" constant="8" id="1C7-av-p6U"/>
+                            <constraint firstItem="9h1-8n-cOn" firstAttribute="top" secondItem="Hho-rA-rjR" secondAttribute="bottom" constant="17" id="1dv-vl-1qs"/>
+                            <constraint firstItem="Hho-rA-rjR" firstAttribute="leading" secondItem="9h1-8n-cOn" secondAttribute="trailing" constant="-222" id="7CC-8Y-mYS"/>
+                            <constraint firstItem="9h1-8n-cOn" firstAttribute="centerX" secondItem="Hho-rA-rjR" secondAttribute="centerX" id="PtI-Dg-XfI"/>
+                            <constraint firstItem="Hho-rA-rjR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="43" id="XJw-Ra-mxz"/>
+                            <constraint firstItem="C9a-8S-mfw" firstAttribute="centerX" secondItem="9h1-8n-cOn" secondAttribute="centerX" id="qyt-gJ-3vT"/>
+                            <constraint firstItem="Hho-rA-rjR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="thi-12-G6f"/>
+                        </constraints>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-34" y="169"/>
+        </scene>
+        <!--Service Discovery Table View Controller-->
+        <scene sceneID="5yz-q4-G0B">
+            <objects>
+                <tableViewController id="b2J-ON-dGn" customClass="ServiceDiscoveryTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="IyR-QQ-OPV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RGBServiceCell" id="rg9-q5-3fe">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rg9-q5-3fe" id="5gc-Gq-p8z">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="123" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RGB8Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oKA-tq-t3v">
+                                            <rect key="frame" x="8" y="0.0" width="476" height="21"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="789" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.0.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9KW-qK-koK">
+                                            <rect key="frame" x="8" y="22" width="211" height="21"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="b2J-ON-dGn" id="ArK-GV-emE"/>
+                            <outlet property="delegate" destination="b2J-ON-dGn" id="WVy-wA-f2N"/>
+                        </connections>
+                    </tableView>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <segue destination="3EE-we-cQS" kind="show" identifier="NanoController" id="nug-IS-g4X"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JOj-Oo-b9e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="731" y="164"/>
+        </scene>
+        <!--Nano View Controller-->
+        <scene sceneID="9xp-cY-Yul">
+            <objects>
+                <viewController id="3EE-we-cQS" customClass="NanoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="U5w-LQ-MfH"/>
+                        <viewControllerLayoutGuide type="bottom" id="EOt-aO-oHV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TQC-9D-BLa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9kB-5J-B9y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="693" y="1043"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="redbear128" width="128" height="128"/>
+    </resources>
+</document>

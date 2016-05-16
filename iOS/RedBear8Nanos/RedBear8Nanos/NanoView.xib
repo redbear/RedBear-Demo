@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NanoView">
+            <rect key="frame" x="0.0" y="0.0" width="172" height="255"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M7Z-lh-XLi" customClass="GradientSlider" customModule="RedBear8Nanos" customModuleProvider="target">
+                    <rect key="frame" x="26" y="112" width="121" height="106"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                            <real key="value" value="360"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="thickness">
+                            <real key="value" value="7"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="minColor">
+                            <color key="value" red="0.98431372549999996" green="0.35686274509999999" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="hasRainbow" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="changeColor:" destination="iN0-l3-epB" eventType="valueChanged" id="fiu-Wr-PEt"/>
+                    </connections>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNu-fx-o5I">
+                    <rect key="frame" x="28" y="35" width="122" height="21"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bra-Ja-GiI">
+                    <rect key="frame" x="28" y="80" width="122" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="122" id="5rT-1y-dpx"/>
+                    </constraints>
+                    <segments>
+                        <segment title="On"/>
+                        <segment title="Off"/>
+                    </segments>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="switch:" destination="iN0-l3-epB" eventType="valueChanged" id="QYu-zS-HeK"/>
+                    </connections>
+                </segmentedControl>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="M7Z-lh-XLi" firstAttribute="top" secondItem="bra-Ja-GiI" secondAttribute="bottom" constant="8" id="G0H-C8-R2a"/>
+                <constraint firstItem="M7Z-lh-XLi" firstAttribute="centerX" secondItem="bra-Ja-GiI" secondAttribute="centerX" constant="-2.5" id="IxK-6Z-5W7"/>
+                <constraint firstItem="M7Z-lh-XLi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="116" id="fdh-v2-1IE"/>
+                <constraint firstItem="bra-Ja-GiI" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="3" id="h86-bo-788"/>
+                <constraint firstItem="M7Z-lh-XLi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="28" id="nKh-pZ-c8H"/>
+                <constraint firstItem="bra-Ja-GiI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="80" id="t26-qj-ITb"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="deviceNo" destination="oNu-fx-o5I" id="Jdb-12-0Tn"/>
+                <outlet property="slider" destination="M7Z-lh-XLi" id="W6M-qK-vnx"/>
+                <outlet property="status" destination="bra-Ja-GiI" id="CQD-my-Yby"/>
+            </connections>
+            <point key="canvasLocation" x="211" y="304.5"/>
+        </view>
+    </objects>
+</document>
