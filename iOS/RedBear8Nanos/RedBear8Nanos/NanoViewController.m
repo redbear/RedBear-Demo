@@ -77,35 +77,42 @@
     _nano0 = [[[NSBundle mainBundle] loadNibNamed:@"NanoView" owner:nil options:nil] firstObject];
     _nano0.frame = CGRectMake(0, 0, width, height);
     _nano0.nano = [nanos objectAtIndex:0];
-   // [_nano0.nano addObserver:self forKeyPath:@"red" options:NSKeyValueObservingOptionNew context:nil];
+    [_nano0 setHidden:YES];
     
     _nano1 = [[[NSBundle mainBundle] loadNibNamed:@"NanoView" owner:nil options:nil] firstObject];
     _nano1.frame = CGRectMake(width, 0, width, height);
     _nano1.nano = [nanos objectAtIndex:1];
+    [_nano1 setHidden:YES];
     
     _nano2 = [[[NSBundle mainBundle] loadNibNamed:@"NanoView" owner:nil options:nil] firstObject];
     _nano2.frame = CGRectMake(width * 2, 0, width, height);
     _nano2.nano = [nanos objectAtIndex:2];
+    [_nano2 setHidden:YES];
     
     _nano3 = [[[NSBundle mainBundle] loadNibNamed:@"NanoView" owner:nil options:nil] firstObject];
     _nano3.frame = CGRectMake(width * 3, 0, width, height);
     _nano3.nano = [nanos objectAtIndex:3];
+    [_nano3 setHidden:YES];
     
     _nano4 = [[[NSBundle mainBundle] loadNibNamed:@"NanoView" owner:nil options:nil] firstObject];
     _nano4.frame = CGRectMake(0,height, width, height);
     _nano4.nano = [nanos objectAtIndex:4];
+    [_nano4 setHidden:YES];
     
     _nano5 = [[[NSBundle mainBundle] loadNibNamed:@"NanoView" owner:nil options:nil] firstObject];
     _nano5.frame = CGRectMake(width,height, width, height);
     _nano5.nano = [nanos objectAtIndex:5];
+    [_nano5 setHidden:YES];
     
     _nano6 = [[[NSBundle mainBundle] loadNibNamed:@"NanoView" owner:nil options:nil] firstObject];
     _nano6.frame = CGRectMake(width*2, height, width, height);
     _nano6.nano = [nanos objectAtIndex:6];
+    [_nano6 setHidden:YES];
     
     _nano7 = [[[NSBundle mainBundle] loadNibNamed:@"NanoView" owner:nil options:nil] firstObject];
     _nano7.frame = CGRectMake(width * 3, height, width, height);
     _nano7.nano = [nanos objectAtIndex:7];
+    [_nano7 setHidden:YES];
     
 
     
@@ -155,6 +162,17 @@
     
     if (deviceNo.intValue == 0xf0) {
         [self getAllInitStatus:NUM.intValue];
+        switch (NUM.intValue) {
+            case 0: break;
+            case 8: [_nano7 setHidden:NO];
+            case 7: [_nano6 setHidden:NO];
+            case 6: [_nano5 setHidden:NO];
+            case 5: [_nano4 setHidden:NO];
+            case 4: [_nano3 setHidden:NO];
+            case 3: [_nano2 setHidden:NO];
+            case 2: [_nano1 setHidden:NO];
+            case 1: [_nano0 setHidden:NO];
+        }
     }
     else {
         Nano *tmp = nanos[deviceNo.intValue];
