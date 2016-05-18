@@ -34,7 +34,7 @@
 //                          nil];
 //    
 //    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
-    NSString *sendJson = [NSString stringWithFormat:@"{\"RGB\":{\"ID\":%@,\"OpCode\":%@, \"R\":%@, \"G\":%@, \"B\":%@}}",
+    NSString *sendJson = [NSString stringWithFormat:@"{\"ID\":%@,\"OpCode\":%@, \"R\":%@, \"G\":%@, \"B\":%@, \"NUM\":0}",
                           [[NSNumber alloc] initWithUnsignedInteger:_identifier], [[NSNumber alloc] initWithInt:2],  [NSNumber numberWithInt:_red],  [NSNumber numberWithInt:_green],  [NSNumber numberWithInt:_blue]];
     NSData *data = [sendJson dataUsingEncoding:NSASCIIStringEncoding];
 

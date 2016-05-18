@@ -99,8 +99,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"SETRGB" object:self userInfo:@{@"r":
                                                                                                         red,
                                                                                                     @"g":
-                                                                                                        green,
-                                                                                                    @"b":
+                                                                                                        green,                                                                                                    @"b":
                                                                                                         blue,
                                                                                                     @"id":
                                                                                                         [[NSNumber alloc] initWithUnsignedInteger:_nano.identifier], @"op" : [[NSNumber alloc] initWithInt:1]}];

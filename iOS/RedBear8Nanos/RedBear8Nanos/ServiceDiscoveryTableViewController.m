@@ -94,6 +94,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSNetService *service = [self.services objectAtIndex:indexPath.row];
+    [SVProgressHUD showWithStatus:@"Connecting..."];
     [self initNetworkCommunication:[self resolveIPAddress:[service addresses]] Port:[service port]];
 }
 
@@ -120,6 +121,7 @@
 {
     switch (eventCode) {
         case NSStreamEventOpenCompleted:
+            [SVProgressHUD dismiss];
             [self performSegueWithIdentifier:@"NanoController" sender:nil];
             break;
         case NSStreamEventHasBytesAvailable:
@@ -182,8 +184,9 @@
 {
     
     NSDictionary *json = [notification userInfo];
-       NSString *sendJson = [NSString stringWithFormat:@"{\"RGB\":{\"ID\":%@,\"OpCode\":%@, \"R\":%@, \"G\":%@, \"B\":%@}}",
-                          json[@"id"],json[@"op"], json[@"r"], json[@"g"], json[@"b"]];
+       NSString *sendJson = [NSString stringWithFormat:@"{\"ID\":%@,\"OpCode\":%@,\"R\":%d,\"G\":%d,\"B\":%d,\"NUM\":0}",
+                          json[@"id"],json[@"op"], ((NSNumber *)json[@"r"]).intValue ,((NSNumber *) json[@"g"]).intValue, ((NSNumber *)json[@"b"]).intValue];
+    NSLog(@"Send Command: %@", sendJson);
     NSData *data = [sendJson dataUsingEncoding:NSASCIIStringEncoding];
     [outputStream write:[data bytes] maxLength:[data length]];
 }
@@ -191,6 +194,7 @@
 
 -(void) disconnect
 {
+    [self.services removeAllObjects];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DISCONNECTED" object:self];
 }
 
@@ -221,14 +225,13 @@
     if (self.refreshControl) {
         [self.refreshControl endRefreshing];
     }
-
-    [SVProgressHUD showErrorWithStatus:@"An Error occurred.  Please try again"];
+  
+    [SVProgressHUD dismiss];
 }
 
 
 -(void)netServiceBrowser:(NSNetServiceBrowser *)browser didFindService:(NSNetService *)service moreComing:(BOOL)moreComing
 {
-    
     service.delegate = self;
     [self.services addObject:service];
     [service resolveWithTimeout:5.0];

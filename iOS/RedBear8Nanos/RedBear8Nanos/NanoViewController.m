@@ -30,8 +30,12 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-     [self getAllInitStatus];
-  }
+    NSString *sendJson = [NSString stringWithFormat:@"{\"ID\":%@,\"OpCode\":%@,\"R\":%@,\"G\":%@,\"B\":%@,\"NUM\":0}",
+                          [[NSNumber alloc] initWithUnsignedInteger:240], [[NSNumber alloc] initWithInt:3],  [NSNumber numberWithInt:0],  [NSNumber numberWithInt:0],  [NSNumber numberWithInt:0]];
+    NSData *data = [sendJson dataUsingEncoding:NSASCIIStringEncoding];
+    [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(sendMessage:) userInfo:@{@"data":data} repeats:NO];
+    
+}
 
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -117,11 +121,11 @@
 
 }
 
--(void) getAllInitStatus
+-(void) getAllInitStatus: (int) numOfDevice
 {
     if (self.outputStream) {
         
-        for (int i=0; i < 8; i++) {
+        for (int i=0; i < numOfDevice; i++) {
             NSData *data =[[nanos objectAtIndex:i] readStatus];
             [NSTimer scheduledTimerWithTimeInterval:0.2*i target:self selector:@selector(sendMessage:) userInfo:@{@"data":data} repeats:NO];
    
@@ -139,25 +143,32 @@
 
 -(void) receiveMessage: (NSNotification *)notification
 {
-    NSDictionary *json = [notification userInfo][@"RGB"];
+    NSDictionary *json = [notification userInfo];
     NSLog(@"%@", json);
     NSNumber *deviceNo = json[@"ID"];
     NSNumber *R = json[@"R"];
     NSNumber *G = json[@"G"];
     NSNumber *B = json[@"B"];
+    NSNumber *NUM = json[@"NUM"];
     NSNumber *opCode = json[@"OpCode"];
-    NSLog(@"%@ %@ %@ %@ %@", deviceNo, R, G, B, opCode);
-    Nano *tmp = nanos[deviceNo.intValue];
-    [tmp updateRed:R Green:G Blue:B];
-    switch (deviceNo.intValue) {
-        case 0: [_nano0 updateView]; break;
-             case 1: [_nano1 updateView]; break;
-             case 2: [_nano2 updateView]; break;
-             case 3: [_nano3 updateView]; break;
-             case 4: [_nano4 updateView]; break;
-             case 5: [_nano5 updateView]; break;
-             case 6: [_nano6 updateView]; break;
-             case 7: [_nano7 updateView]; break;
+    NSLog(@"%@ %@ %@ %@ %@ %@", deviceNo, R, G, B, opCode, NUM);
+    
+    if (deviceNo.intValue == 0xf0) {
+        [self getAllInitStatus:NUM.intValue];
+    }
+    else {
+        Nano *tmp = nanos[deviceNo.intValue];
+        [tmp updateRed:R Green:G Blue:B];
+        switch (deviceNo.intValue) {
+            case 0: [_nano0 updateView]; break;
+         case 1: [_nano1 updateView]; break;
+         case 2: [_nano2 updateView]; break;
+         case 3: [_nano3 updateView]; break;
+         case 4: [_nano4 updateView]; break;
+         case 5: [_nano5 updateView]; break;
+         case 6: [_nano6 updateView]; break;
+         case 7: [_nano7 updateView]; break;
+        }
     }
 }
 

@@ -72,7 +72,7 @@
                             <constraint firstItem="Hho-rA-rjR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="thi-12-G6f"/>
                         </constraints>
                     </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
