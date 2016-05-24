@@ -208,7 +208,7 @@ public class ControlActivity extends Activity implements Correspondent.Correspon
     }
 
     private void maskView(int count){
-        if (count >= MAX_DEVICES_NUM)
+        if (count > MAX_DEVICES_NUM)
             return;
         for (int i = 0;i < MAX_DEVICES_NUM;i++){
             if (i >= count){
@@ -237,9 +237,12 @@ public class ControlActivity extends Activity implements Correspondent.Correspon
 
     @Override
     public void onDataReceive(String d) {
+        Log.e("onDataReceive","<<<<<  "+d);
         try {
             upDateData(gson.fromJson(d,DataPackage.class));
-        }catch (Exception e){}
+        }catch (Exception e){
+            Log.e("upDateData exception",e.getMessage());
+        }
     }
 
     private void upDateData(final DataPackage data){
@@ -248,7 +251,6 @@ public class ControlActivity extends Activity implements Correspondent.Correspon
             public void run() {
                 if (data == null)
                     return;
-
                 if (data.getId() == DEV_COUNT_FLG){
                     if (data.getNum() > MAX_DEVICES_NUM)
                         return;

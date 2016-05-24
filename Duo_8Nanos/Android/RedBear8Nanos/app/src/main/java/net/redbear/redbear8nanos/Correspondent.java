@@ -95,6 +95,7 @@ public class Correspondent {
     };
 
     public void send(String data){
+        Log.e("data",">>>>>  "+data);
         if (outputStream != null){
             try {
                 outputStream.write(data.getBytes());

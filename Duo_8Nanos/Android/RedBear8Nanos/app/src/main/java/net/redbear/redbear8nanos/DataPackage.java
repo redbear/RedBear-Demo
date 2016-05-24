@@ -71,4 +71,9 @@ public class DataPackage {
         return gson.toJson(this);
     }
 
+
+    @Override
+    public String toString() {
+        return "ID : "+id+"  r : "+r+"  g : "+g+" b : "+b;
+    }
 }
