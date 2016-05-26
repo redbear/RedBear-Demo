@@ -11,12 +11,15 @@ This demo allows a TCP client to connect to the Duo and conntrolling up to 8 BLE
 
 	(For iOS, you need to compile yourself with your iOS developer license)
 
+
 ## Setup
 
-* Follow [this](https://github.com/redbear/STM32-Arduino), use board package v0.2.8, to load the firmware (v0.2.4-rc3) and the `Duo_BLECentral` sketch to the Duo.
+* Follow [this](https://github.com/redbear/STM32-Arduino), use board package v0.2.8, to load the firmware (v0.2.4-rc3) using RBLink or DFU and the `Duo_BLECentral` sketch to the Duo.
 * Follow [this](https://github.com/redbear/nRF51822-Arduino) to load the ```BLENano_BLEPeripheral``` sketch to the BLE Nano.
 * For Android: compile or load the APK file inside ```Android``` to your Android phone.
 * For iOS: compile the project inside ```iOS``` to your iPhone, iPod touch or iPad.
+
+Note: Firmware v0.2.3 will not work, thus, it will not work for Particle Web IDE. Please wait for the release of v0.2.4.
 
 
 ## How it works
