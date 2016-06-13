@@ -4,6 +4,8 @@ Use node.js to change the Beacon setting
 
 to set the node.js and particle-api-js please follow [this](https://docs.particle.io/reference/javascript/#installation)
 
+edit the setBeacon to set your token and device ID.
+
 
 ## How to Use
 
