@@ -1,0 +1,128 @@
+<div id="controlPanel">
+    <h2>Cloud Beacon Control Panel</h2>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Available Devices</label>
+        <div class="col-sm-8">
+            <select class="form-control" ng-model="user.selectedDevice" ng-options="device.id  as device.name for device in user.devices">
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <p ng-show="user.devices.length == 0" style="color:red">* No device is connected to Particle.</p>
+        </div>
+    </div>
+    <div class="control" ng-show="user.devices.length > 0 && user.selectedDevice != null">
+        <h4>Device ID: {{user.selectedDevice}} </h4>
+        <h5>Status: {{ user.status }}</h5>
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="iBeaconUUID">iBeacon UUID</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="UUID" ng-model="beaconConfig.ibeacon.UUID">
+            </div>
+            <label class="col-sm-2 control-label">
+              <input type="checkbox" ng-model="beaconConfig.ibeacon.en"> Enabled
+            </label>
+            <div class="col-sm-2">
+                <button class="btn btn-primary"  ng-click="setiBeacon()">Update Setting</button>
+            </div>
+          </div>
+           <div class="form-group">
+            <label class="col-sm-2 control-label" for="eddyStoneUID">EddyStone ID</label>
+            <div class="col-sm-1" >
+                <input type="text" class="form-control" placeholder="UID-" ng-model="beaconConfig.eddyStone.UID0">
+            </div>
+             <div class="col-sm-1">
+                <input type="text" class="form-control" placeholder="UID1" ng-model="beaconConfig.eddyStone.UID1">
+            </div>
+             <div class="col-sm-1">
+                <input type="text" class="form-control" placeholder="UID2" ng-model="beaconConfig.eddyStone.UID2">
+            </div>
+             <div class="col-sm-1">
+                <input type="text" class="form-control" placeholder="UID3" ng-model="beaconConfig.eddyStone.UID3">
+            </div>
+             <div class="col-sm-1">
+                <input type="text" class="form-control" placeholder="UID4" ng-model="beaconConfig.eddyStone.UID4">
+            </div>
+             <div class="col-sm-1">
+                <input type="text" class="form-control" placeholder="UID5" ng-model="beaconConfig.eddyStone.UID5">
+            </div>
+            <label class="col-sm-2 control-label">
+              <input type="checkbox" ng-model="beaconConfig.eddyStone.en"> Enabled
+            </label>
+              <div class="col-sm-2">
+                <button  ng-click="setESId()" class="btn btn-primary">Update Setting</button>
+            </div>
+          </div>
+           <div class="form-group">
+            <label class="col-sm-2 control-label" for="eddyStoneName">EddyStone Name</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control"  placeholder="EddyStone Name" ng-model="beaconConfig.eddyStone.name">
+            </div>
+              <div class="col-sm-2">
+                <button  ng-click="setESName()" class="btn btn-primary">Update Setting</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="eddyStoneURL">EddyStone URL</label>
+            <div class="col-sm-2">
+              <select class="form-control clear" ng-model="beaconConfig.eddyStone.urlscheme">
+                <option value="00">http://www.</option>
+                <option value="01">https://www.</option>
+                <option value="02">http://</option>
+                <option value="03">https://</option>
+              </select>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="URL" ng-model="beaconConfig.eddyStone.url">
+            </div>
+            <div class="col-sm-1">
+              <select class="form-control clear" ng-model="beaconConfig.eddyStone.urlencoding">
+                <option value="00">.com/</option>
+                <option value="01">.org/</option>
+                <option value="02">.edu/</option>
+                <option value="03">.net/</option>
+                <option value="04">.info/</option>
+                <option value="05">.biz/</option>
+                <option value="06">.gov/</option>
+                <option value="07">.com</option>
+                <option value="08">.org</option>
+                <option value="09">.edu</option>
+                <option value="10">.net</option>
+                <option value="11">.info</option>
+                <option value="12">.biz</option>
+                <option value="13">.gov</option>
+                <option value="">none</option>
+              </select>
+            </div>
+            <label class="col-sm-2 control-label">
+              <input type="checkbox" ng-model="beaconConfig.eddyStone.enURL"> Enabled
+            </label>
+              <div class="col-sm-2">
+                <button  ng-click="setESUrl()" class="btn btn-primary">Update Setting</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="eidString">EID String</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="key" ng-model="beaconConfig.eddyStone.key">
+            </div>
+            <label class="col-sm-2 control-label">
+              <input type="checkbox" ng-model="beaconConfig.eddyStone.enEIDString"> Enabled
+            </label>
+              <div class="col-sm-2">
+                <button  ng-click="setEIDString()" class="btn btn-primary">Update Setting</button>
+            </div>
+          </div>
+           <div class="form-group">
+            <label class="col-sm-2 control-label" for="interval">Interval</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control"  placeholder="Interval" ng-model="beaconConfig.interval">
+            </div>
+              <div class="col-sm-2">
+                <button class="btn btn-primary"  ng-click="setInterval()">Update Setting</button>
+            </div>
+            
+          </div>
+      </form>
+    </div>
+</div>

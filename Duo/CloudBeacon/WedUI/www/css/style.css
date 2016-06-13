@@ -1,0 +1,43 @@
+#loginForm {
+    width: 50%;
+    margin: 20px auto 0 auto;
+    text-align: center;
+}   
+
+#loginForm .form {
+
+    border: 1px solid #dddddd;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+
+
+
+
+#controlPanel {
+    width: 80%;
+    margin: 20px auto 0 auto;
+    border: 1px solid #dddddd;
+    padding: 10px;
+    border-radius: 5px;
+    min-height:500px;
+}
+
+#controlPanel select {
+    width: 400px;
+}
+
+#controlPanel select.clear {
+    width: 100%;
+}
+
+#controlPanel .control {
+    margin: 80px 20px;
+    height: 400px;
+}
+
+#controlPanel form {
+    margin-top: 40px;
+}
