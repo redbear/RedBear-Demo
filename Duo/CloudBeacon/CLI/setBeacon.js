@@ -1,6 +1,7 @@
 var Particle = require('particle-api-js');
 var particle = new Particle();
-var token = 'xxxxxx'; // from result of particle.login
+var token = 'xxxx'; // from result of particle.login
+var devID = 'xxxx';
 var func_name;
 var func_arg;
 
@@ -11,7 +12,7 @@ process.argv.forEach(function (val, index, array) {
                      });
 
 
-var fnPr = particle.callFunction({ deviceId: 'xxxx', name: func_name, argument: func_arg , auth: token });
+var fnPr = particle.callFunction({ deviceId: devID, name: func_name, argument: func_arg , auth: token });
 
 fnPr.then(
           function(data) {
