@@ -14,4 +14,4 @@
 
 ## upload the Duo firmware ##
 1. upload the `Duo_keil_led_mesh` sketch by Arduino IDE
-2. use TCP/IP tools such as telnet to send data to Duo.
+2. use nodejs tools to send data to Duo.

@@ -1,0 +1,19 @@
+{
+  "name": "mesh",
+  "version": "1.0.0",
+  "description": "RedBear Duo Mesh Demo",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js $npm_config_ip $npm_config_port",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mesh",
+    "ble"
+  ],
+  "author": "Sunny Cheung",
+  "license": "ISC",
+  "dependencies": {
+    "readline": "^1.3.0"
+  }
+}
