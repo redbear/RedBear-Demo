@@ -42,7 +42,7 @@
 //back of read number
 {
 "OpCode":0,
-"ID":0xF0,  
+"ID":240,  
 "NUM":8,   //Device count
 "R":0,     //invalid
 "G":0,     //invalid
